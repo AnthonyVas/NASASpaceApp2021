@@ -1,13 +1,26 @@
-body{
-    background-color: beige;
+body {
+  background-color: beige;
+}
+header {
+  background-color: blueviolet;
+}
+.map {
+  width: 1000px !important;
+  height: 70vh !important;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.map{
-    width: 2000px !important;
-    height: 100vh  !important;
+.map > svg {
+  width: 1000px !important;
+  height: 100% !important;
 }
 
-.map > svg{
-    width: 1000px !important;
-    height: 100% !important;
+.display-data {
+}
+
+
+
+.land:hover{
+    fill: red;
 }
