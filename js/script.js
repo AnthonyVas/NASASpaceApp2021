@@ -65,9 +65,9 @@ $description = $(".description");
 
 $('.land').hover(function () {
 
-    $(this).attr("class", "enabled heyo");
+    $(this).attr("class", "enabled heyo land");
     $description.addClass('active');
-    $description.html($(this).attr('id'));
+    $description.html($(this).attr('title'));
 }, function () {
     $description.removeClass('active');
 });
