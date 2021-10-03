@@ -4,6 +4,10 @@ body {
 header {
   background-color: blueviolet;
 }
+footer{
+    height: 200px;
+    width: 100%;
+}
 .map {
   width: 1000px !important;
   height: 70vh !important;
@@ -18,9 +22,23 @@ header {
 
 .display-data {
 }
-
-
-
+.land
+{
+    fill: green;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.5;
+}
 .land:hover{
     fill: red;
+}
+
+#SV-SM{
+    fill: yellow;
+        fill-opacity: 0.5;
+}
+
+.options{
+    text-align: center;
 }
