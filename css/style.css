@@ -42,3 +42,7 @@ footer{
 .options{
     text-align: center;
 }
+
+#myTab{
+    justify-content: center !important;
+}
