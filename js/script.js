@@ -1,23 +1,9 @@
-var depName = ["SV-AH", "SV-CA","SV-CH","SV-CU", "SV-LI","SV-MO","SV-PA","SV-SA","SV-SM","SV-SO","SV-SS","SV-SV","SV-UN","SV-US"];
-
+let depName = [["SV-AH", "Ahuachapan"], ["SV-CA", "Cabañas"], ["SV-CH", "Chalatenango"], ["SV-CU", "Cuscatlán"], ["SV-LI", "La Libertad"], ["SV-MO", "Morazán"], ["SV-PA", "La Paz"], ["SV-SA", "Santa Ana"], ["SV-SM", "San Miguel"], ["SV-SO", "Sonsonate"], ["SV-SS", "San Salvador"], ["SV-SV", "San Vicente"], ["SV-UN", "La Union"], ["SV-US", "Usulutan"]];
+// var depNameT = ["Ahuachapan","Cabañas","Chalatenango","Cuscatlán","La Libertad","Morazán","La Paz","Santa Ana","San Miguel","Sonsonate","San Salvador", "San Vicente","La Union", "Usulutan"];
+var tempSS;
 
 $(document).ready(function () {
-
-    $('#clima').click(function (e) {
-        e.preventDefault();
-
-
-        $.ajax({
-            url: 'http://history.openweathermap.org/data/3.0/history/locations/create?lat=51.8080&lon=-0.1257&appid=331e87080967381398c662bf2c28050c',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                // $('#texthome').text(data.name);
-                $('#fmap').text(data);
-            }
-        });
-
-    });
+    setSendData();
     $('#SV-SS').click(function (e) {
         e.preventDefault();
         loadData('SV-SS');
@@ -28,22 +14,13 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 // $('#texthome').text(data.name);
-                $('#txt').text(data.main.temp + "°C");
+                // $('#txt').text(data.main.temp + "°C");
+                tempSS = data.main.temp;
+                $('#txt').text(tempSS + "°C");
             }
         });
-        $.ajax({
-            url: 'https://elsalvador_vasquez:6GQbBrpOs2Pa7@api.meteomatics.com/2021-10-03T00:00:00ZP1D:PT1H/t_2m:C,relative_humidity_2m:p/47.4245,9.3767/json',
-            // url: ' https://elsalvador_vasquez:6GQbBrpOs2Pa7@api.meteomatics.com/2020-10-03T00:00:00Z--2021-10-06T00:00:00Z:PT24H/t_2m_10y_mean:C/13.749224681187735,-89.21921764650615/html_map',
-            // url: ' https://api.meteomatics.com/2020-10-03T00:00:00Z--2021-10-06T00:00:00Z:PT24H/t_2m_10y_mean:C/13.749224681187735,-89.21921764650615/html',
 
-            type: 'POST',
-            dataType: 'json',
-            success: function (data) {
-                // $('#texthome').text(data.name);
-                $('#fmap').text(data);
 
-            }
-        });
 
     });
 
@@ -62,7 +39,7 @@ $(document).ready(function () {
         });
     });
 
-
+    // var date = currentTimeDate.getDate();
     $('#SV-UN').click(function (e) {
         e.preventDefault();
         loadData('SV-UN');
@@ -76,44 +53,76 @@ $(document).ready(function () {
 
             }
         });
-
     });
-    // $('#SV-UN').hover(function (e) {
-    //     e.preventDefault();
-    //     alert("america");
-
-    // });
+    
+    
 });
 
 function loadData(id) {
     switch (id) {
         case 'SV-SS':
-            $('#texthome').text("Hola San Salvador");
+            $('#texthome').text("Hola compatriota de San Salvador");
             $('.nameMunicipio').text($('#' + id).attr('title'));
-            setColorMap();
-            $('#'+id).css('fill','#000000');
+            setSendData();
+            $('#' + id).css('fill', '#000000');
             break;
         case 'SV-SM':
-            $('#texthome').text("Hola San Miguel");
+            $('#texthome').text("Hola compatriota de San Miguel");
             $('.nameMunicipio').text($('#' + id).attr('title'));
-            setColorMap();
-            $('#'+id).css('fill','#000000');
+            setSendData();
+            $('#' + id).css('fill', '#000000');
             break;
         case 'SV-UN':
-            $('#texthome').text("Hola La Union");
+            $('#texthome').text("Hola compatriota de La Union");
             $('.nameMunicipio').text($('#' + id).attr('title'));
-            setColorMap();
-            $('#'+id).css('fill','#000000');
+            setSendData();
+            $('#' + id).css('fill', '#000000');
             break;
         default:
             alert("Sorry we got internal troubles.")
     }
 }
-function setColorMap(){
+function setSendData() {
+    var count = 0;
     depName.forEach(element => {
-        $('#'+element).css('fill','green');
+        // console.log(element);
+        $.ajax({
+            url: `https://api.openweathermap.org/data/2.5/weather?q=${element[1]},SV&units=metric&appid=331e87080967381398c662bf2c28050c`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // $('#texthome').text(data.name);
+                // $('#txt').text(data.main.temp + "°C");
+                setColorMap(data.main.temp, element[0], element[1]);
+                // console.log(element);
 
+            }
+        });
+        // alert(depName[count]);
+
+        count++;
     });
+}
+
+function setColorMap(temp, name, nameT) {
+    // console.log(name);s
+    if (temp < 25) {
+        $('#' + name).css('fill', 'green');
+
+    } else if (temp > 25 && temp < 32) {
+        $('#' + name).css('fill', 'orange');
+
+    }
+    else if (temp > 32) {
+        $('#' + name).css('fill', 'red');
+    } else {
+        $('#' + name).css('fill', 'black');
+    }
+
+    // depName.forEach(element => {
+    //     $('#'+element).css('fill','green');
+
+    // });
 }
 /*FOR THE TOOLTIP */
 $description = $(".description");
