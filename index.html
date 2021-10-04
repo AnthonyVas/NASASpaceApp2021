@@ -13,8 +13,9 @@
 
 <body>
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <img src="./logo.png" width="150" height="70" alt="" srcset="">
+       
         <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src="./logo.png" width="150" height="70" alt="" srcset="">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
           <span class="fs-4">Non-Stop Heat Team - El Salvador</span>
         </a>
@@ -25,11 +26,13 @@
         </ul>
       </header>
     <div class="container-fluid">
-        <section class="map">
+        <!-- <div class="map "> -->
             <div class="mainMap">
                 <div class="mapSVG">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:amcharts="http://amcharts.com/ammap"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+                    <svg  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" 
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+                     viewBox="0 0 850 850" 
+                    enable-background="new 0 0 500 500" xml:space="preserve">
                     <defs>
     
     
@@ -87,8 +90,8 @@
                 </div>
             </div>
            
-        </section>
-        <section class="display-data">
+        <!-- </div> -->
+        <div class="display-data ">
             <h4>
                 <center> Impacto ocasianodo debido a los niveles de calor en <span class="nameMunicipio">{municipioName}</span></center>
             </h4>
@@ -219,7 +222,7 @@
                 </div>
             </div>
 
-        </section>
+        </div>
         
     </div>
     
