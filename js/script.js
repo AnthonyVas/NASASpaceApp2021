@@ -61,19 +61,19 @@ $(document).ready(function () {
 function loadData(id) {
     switch (id) {
         case 'SV-SS':
-            $('#texthome').text("Hola compatriota de San Salvador");
+            $('#texthome').text("En la zona en que ha seleccionado (San Salvador), el peligro de calor extremo se clasifica como bajo de acuerdo con la información disponible en esta herramienta. Esto significa que hay una probabilidad de entre el 5 % y el 25 % de que se produzca al menos un periodo de exposición prolongada a calor extremo, causando estrés térmico, en los próximos cinco años.");
             $('.nameMunicipio').text($('#' + id).attr('title'));
             setSendData();
             $('#' + id).css('fill', '#000000');
             break;
         case 'SV-SM':
-            $('#texthome').text("Hola compatriota de San Miguel");
+            $('#texthome').text("En la zona en que ha seleccionado (San Miguel), el peligro de calor extremo se clasifica como medio de acuerdo con la información disponible en esta herramienta. Esto significa que hay una probabilidad superior al 25 % de que se produzca una exposición prolongada al calor extremo, causando estrés térmico, al menos una vez en los próximos cinco años. Las decisiones relativas a la planificación del proyecto, el diseño del proyecto y los métodos de construcción deben tener en cuenta el nivel de peligro extremo.");
             $('.nameMunicipio').text($('#' + id).attr('title'));
             setSendData();
             $('#' + id).css('fill', '#000000');
             break;
         case 'SV-UN':
-            $('#texthome').text("Hola compatriota de La Union");
+            $('#texthome').text("En la zona en que ha seleccionado (Pasaquina), el peligro de calor extremo se clasifica como alto de acuerdo con la información disponible en esta herramienta. Esto significa que se espera que en los próximos cinco años ocurra al menos una vez una exposición prolongada al calor extremo, causando resultado estrés térmico. Las decisiones relativas a la planificación del proyecto, el diseño del proyecto y los métodos de construcción deben tener en cuenta el nivel de peligro extremo.");
             $('.nameMunicipio').text($('#' + id).attr('title'));
             setSendData();
             $('#' + id).css('fill', '#000000');
